@@ -1,0 +1,70 @@
+ghost.txt		URL の情報を表示するためのプラグインです
+
+==============================================================================
+概要						*ghost-introduction*
+
+*ghost* は URL の情報を表示するためのプラグインです。
+
+
+Requirement:
+
+  mattn/webapi-vim - https://github.com/mattn/webapi-vim
+
+
+==============================================================================
+使い方						*ghost-usage*
+
+Example: >
+	" URL にマウスカーソルを合わせるとバルーン表示する
+	set balloonexpr=ghost#balloonexpr_url_title()
+	set ballooneval
+	
+	" カーソルを URL の上に乗せると自動的にタイトルを表示する
+	let g:ghost_enable_echo_title_cursor_moved = 1
+<
+
+==============================================================================
+インターフェース				*ghost-interface*
+
+------------------------------------------------------------------------------
+コマンド					*ghost-commands*
+
+GhostEchoTitleOnCursorURL			*GhostEchoTitleOnCursorURL*
+	カーソル下の URL のタイトルを出力します。
+
+------------------------------------------------------------------------------
+関数						*ghost-functions*
+
+ghost#get_title({url} [, {encode}])		*ghost#get_title()*
+	{url} のタイトルを {encode} に変換して返します。
+	{encode} がない場合は 'encoding' が使用されます。
+	メモ化しているので以前に呼ばれたことのある {url} であれば即座に返しま
+	す。
+
+ghost#get_url_on_cursor()			*ghost#get_url_on_cursor()*
+	カーソル下の URL を返します。
+
+ghost#balloonexpr_url_title()			*ghost#balloonexpr_url_title()*
+	'balloonexpr' に設定するための関数です。
+	カーソル下の URL のタイトルをバルーン表示します。
+
+ghost#clear_cache()				*ghost#balloonexpr_url_title()*
+	|ghost#get_title()| のキャッシュをクリアします。
+
+==============================================================================
+設定						*ghost-setting*
+
+------------------------------------------------------------------------------
+変数						*ghost-variables*
+
+g:ghost_enable_echo_title_cursor_moved		*g:ghost_enable_echo_title_cursor_moved*
+	1 が設定されていればカーソルが移動するたび
+	|GhostEchoTitleOnCursorURL| を呼び出します。
+
+Default: >
+	let ghost_enable_echo_title_cursor_moved = 0
+<
+
+
+==============================================================================
+vim:tw=78:fo=tcq2mM:ts=8:ft=help:norl
