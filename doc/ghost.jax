@@ -48,7 +48,7 @@ ghost#balloonexpr_url_title()			*ghost#balloonexpr_url_title()*
 	'balloonexpr' に設定するための関数です。
 	カーソル下の URL のタイトルをバルーン表示します。
 
-ghost#clear_cache()				*ghost#balloonexpr_url_title()*
+ghost#clear_cache()				*ghost#clear_cache()*
 	|ghost#get_title()| のキャッシュをクリアします。
 
 ==============================================================================
